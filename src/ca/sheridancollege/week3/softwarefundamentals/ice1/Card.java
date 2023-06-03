@@ -16,44 +16,65 @@ package ca.sheridancollege.week3.softwarefundamentals.ice1;
  */
 
 /*
-* Name - Aayush Shah
-* Student Id - #991703841
+* Name - Preet Kaur
+* Student Id - 991703841
 
 */
+import java.util.Random;
+import java.util.Scanner;
+
 public class Card {
 
-   private String suit; //clubs, spades, diamonds, hearts
-   private int value;//1-13
+   
+   public static final String[] SUITS = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    private int value;
+    private String suit;
 
-   public static final String [] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
-    /**
-     * @return the suit
-     */
-    public String getSuit() {
-        return suit;
+    public Card() {
+        this.value = 0;
+        this.suit = "";
     }
 
-    /**
-     * @param suit the suit to set
-     */
-    public void setSuit(String suit) {
+    public Card(int value, String suit) {
+        this.value = value;
         this.suit = suit;
     }
 
-    /**
-     * @return the value
-     */
     public int getValue() {
         return value;
     }
 
-    /**
-     * @param value the value to set
-     */
     public void setValue(int value) {
         this.value = value;
     }
-   
-   
-   
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Card card = (Card) obj;
+        return value == card.value && suit.equals(card.suit);
+    }
+    
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(13) + 1; // Random number from 1 to 13
+    }
+
+    public static int generateRandomNumber(int upperBound) {
+        Random random = new Random();
+        return random.nextInt(upperBound);
+    }
 }
